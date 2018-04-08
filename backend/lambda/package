@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd src/create_job
+zip -r ../../deploy/create_job.zip  .
+popd
