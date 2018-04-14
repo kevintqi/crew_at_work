@@ -26,6 +26,8 @@
     "sinon": "^2.0.0"
   },
   "dependencies": {
-    "validate": "^4.2.0"
+    "validate": "^4.2.0",
+    "my_util": "file:./src/my_util",
+    "my_db": "file:./src/my_db"
   }
 }

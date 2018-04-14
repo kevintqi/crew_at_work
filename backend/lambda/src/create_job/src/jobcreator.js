@@ -1,7 +1,7 @@
-const AWS = require('./db/aws');
-const Table = require("./db/table");
-const Item = require("./db/item");
-const Client = require("./db/client.js");
+const AWS = require('my_db').AWS;
+const Table = require("my_db").Table;
+const Item = require("my_db").Item;
+const Client = require("my_db").Client;
 const uuid = require("uuid/v1");
 
 const tableParams = require("./data/jobtable.json");

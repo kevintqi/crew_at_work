@@ -1,7 +1,7 @@
 {
-  "name": "job_manager",
+  "name": "my_util",
   "version": "1.0.0",
-  "description": "",
+  "description": "Local utility functions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "my_db": "file:../my_db",
-    "my_util": "file:../my_util",
-    "uuid": "^3.2.1"
+    "validate": "^4.2.0"
   }
 }

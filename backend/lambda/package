@@ -1,5 +1,5 @@
 #!/bin/bash
 
 pushd src/create_job
-zip -r ../../deploy/create_job.zip  .
+rm -f ../../deploy/create_job.zip && zip -FSr ../../deploy/create_job.zip  .
 popd

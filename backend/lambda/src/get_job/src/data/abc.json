@@ -1,0 +1,57 @@
+{
+    "squadId": {
+      "type": "string",
+      "required": true
+    },
+    "contact": {
+      "name": {
+        "type": "string",
+        "required": true
+      },
+      "phoneNumber": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "location": {
+      "street": {
+        "type": "string",
+        "required": true
+      },
+      "city": {
+        "type": "string",
+        "required": false
+      },
+      "zipCode": {
+        "type": "string",
+        "match": "/[0-9]+/",
+        "required": false
+      },
+      "state": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "schedule": {
+      "repeatType": {
+        "type": "string",
+        "required": true
+      },
+      "startDate": {
+        "type": "Date",
+        "required": false
+      },
+      "endDate": {
+        "type": "Date",
+        "required": false
+      },
+      "startTime": {
+        "type": "Date",
+        "required": false
+      },
+      "endTime": {
+        "type": "Date",
+        "required": false
+      }
+    }
+  }

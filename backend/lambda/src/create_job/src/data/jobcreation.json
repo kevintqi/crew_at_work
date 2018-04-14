@@ -1,5 +1,5 @@
 {
-  "companyId": {
+  "squadId": {
     "type": "string",
     "required": true
   },
@@ -32,10 +32,10 @@
       "required": true
     }
   },
-  "targetSchedule": {
-    "scheduleType": {
+  "schedule": {
+    "repeatType": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "startDate": {
       "type": "Date",
@@ -45,15 +45,13 @@
       "type": "Date",
       "required": false
     },
-    "time": {
-      "start": {
-        "type": "Date",
-        "required": false
-      },
-      "end": {
-        "type": "Date",
-        "required": false
-      }
+    "startTime": {
+      "type": "Date",
+      "required": false
+    },
+    "endTime": {
+      "type": "Date",
+      "required": false
     }
   }
 }

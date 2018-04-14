@@ -1,11 +1,11 @@
 {
   "TableName": "Job",
   "KeySchema": [
-    { "AttributeName": "companyId", "KeyType": "HASH" },
+    { "AttributeName": "squadId", "KeyType": "HASH" },
     { "AttributeName": "jobId", "KeyType": "RANGE" }
   ],
   "AttributeDefinitions": [
-    { "AttributeName": "companyId", "AttributeType": "S" },
+    { "AttributeName": "squadId", "AttributeType": "S" },
     { "AttributeName": "jobId", "AttributeType": "S" }
   ],
   "ProvisionedThroughput": {
