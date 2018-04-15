@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {},
   "dependencies": {
     "validate": "^4.2.0"
   }

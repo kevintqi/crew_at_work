@@ -39,6 +39,7 @@
 class EventHandler {
   constructor(event, callback) {
     this.request = event;
+    this.headers = event.headers;
     this.inputData = JSON.parse(event.body);
     this.response = {};
     this.callback = callback;

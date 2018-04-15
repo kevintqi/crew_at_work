@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {},
   "dependencies": {
     "aws-sdk": "^2.224.1"
   }

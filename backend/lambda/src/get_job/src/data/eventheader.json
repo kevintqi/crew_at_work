@@ -1,0 +1,6 @@
+{
+    "squadId": {
+      "type": "string",
+      "required": true
+    }
+}

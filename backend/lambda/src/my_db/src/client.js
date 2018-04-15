@@ -46,6 +46,17 @@ class Client {
       });
     });
   }
+
+  query(item) {
+    return new Promise((resolve, reject) => {
+      this.client.query(item, (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(data);
+      });
+    });
+  }
 }
 
 module.exports = Client;

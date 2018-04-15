@@ -13,12 +13,17 @@ class Item {
     return this;
   }
 
+  addKeyConditionExpression(expression) {
+    this.KeyConditionExpression = expression;
+    return this;
+  }
+
   addUpdateExpression(expression) {
     this.UpdateExpression = expression;
     return this;
   }
 
-  addExpressionAttributeValues(values) {
+  withExpressionValues(values) {
     this.ExpressionAttributeValues = values;
     return this;
   }
