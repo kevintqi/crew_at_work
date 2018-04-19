@@ -24,7 +24,6 @@
     },
     "zipCode": {
       "type": "string",
-      "match": "/[0-9]+/",
       "required": false
     },
     "state": {
@@ -38,19 +37,19 @@
       "required": true
     },
     "startDate": {
-      "type": "Date",
+      "type": "string",
       "required": false
     },
     "endDate": {
-      "type": "Date",
+      "type": "string",
       "required": false
     },
     "startTime": {
-      "type": "Date",
+      "type": "string",
       "required": false
     },
     "endTime": {
-      "type": "Date",
+      "type": "string",
       "required": false
     }
   }

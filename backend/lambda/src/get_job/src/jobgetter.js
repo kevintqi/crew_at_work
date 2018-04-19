@@ -12,7 +12,9 @@ class JobGetter {
     item
       .addKeyConditionExpression("squadId = :s")
       .withExpressionValues({ ":s": data.squadId });
-    return this.client.query(item);
+    return this.client.query(item).then(data => {
+      return { jobs: data.Items };
+    });
   }
 }
 

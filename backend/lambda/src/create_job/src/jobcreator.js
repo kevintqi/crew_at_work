@@ -1,4 +1,4 @@
-const AWS = require('my_db').AWS;
+const AWS = require("my_db").AWS;
 const Table = require("my_db").Table;
 const Item = require("my_db").Item;
 const Client = require("my_db").Client;
@@ -26,7 +26,12 @@ class JobCreator {
     const item = new Item(tableParams.TableName);
     data.jobId = uuid();
     item.addData(data);
-    return this.client.put(item);
+    return this.client.put(item).then(result => {
+      return {
+        squadId: result.Item.squadId,
+        jobId: result.Item.jobId
+      };
+    });
   }
 }
 
