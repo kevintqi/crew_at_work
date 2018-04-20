@@ -10,6 +10,6 @@
   "license": "ISC",
   "repository": {},
   "dependencies": {
-    "validate": "^4.2.0"
+    "jsonschema": "^1.2.4"
   }
 }

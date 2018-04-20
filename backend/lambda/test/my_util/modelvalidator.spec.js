@@ -5,14 +5,21 @@ const Validator = require("validate");
 
 describe("ModelValidator.run()", () => {
   const schema = {
-    id: {
-      type: "number",
-      required: true
+    $schema: "http://json-schema.org/draft-06/schema#",
+    title: "Product",
+    description: "A product from Acme's catalog",
+    type: "object",
+    properties: {
+      id: {
+        description: "The unique identifier for a product",
+        type: "integer"
+      },
+      name: {
+        description: "Name of the product",
+        type: "string"
+      }
     },
-    name: {
-      type: "string",
-      required: false
-    }
+    required: ["id"]
   };
   const modelValidator = new ModelValidator(schema);
   it("it should handle valid data", done => {
@@ -51,7 +58,7 @@ describe("ModelValidator.run()", () => {
       })
       .catch(err => {
         err.message.length.should.equal(1);
-        err.message[0].should.equal("id must be of type number.");
+        err.message[0].should.equal("instance.id is not of a type(s) integer");
         done();
       });
   });
@@ -65,7 +72,7 @@ describe("ModelValidator.run()", () => {
       })
       .catch(err => {
         err.message.length.should.equal(1);
-        err.message[0].should.equal("id is required.");
+        err.message[0].should.equal('instance requires property "id"');
         done();
       });
   });
