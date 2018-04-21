@@ -1,7 +1,6 @@
 const Sinon = require("sinon");
 const should = require("chai").should();
 const ModelValidator = require("my_util").ModelValidator;
-const Validator = require("validate");
 
 describe("ModelValidator.run()", () => {
   const schema = {
