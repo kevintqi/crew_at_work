@@ -11,13 +11,10 @@ exports.handler = (event, context, callback) => {
   validator
     .run(eventHandler.inputData)
     .then(validData => {
-      return jobCreator.run(validData).then(data => {
-        eventHandler.status(200).send(data);
-      }).catch(err => {
-        eventHandler.status(400).send(err);
-      });
+      return jobCreator
+        .run(validData)
+        .then(data => eventHandler.status(200).send(data))
+        .catch(err => eventHandler.status(500).send(err));
     })
-    .catch(err => {
-      eventHandler.status(400).send(err);
-    });
+    .catch(err => eventHandler.status(400).send(err));
 };

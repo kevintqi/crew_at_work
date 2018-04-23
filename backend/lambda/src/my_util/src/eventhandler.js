@@ -1,9 +1,15 @@
 class EventHandler {
   constructor(event, callback) {
+    console.log(event);
     this.request = event;
     this.headers = event.headers;
+    this.query = event.queryStringParameters || {};
     this.inputData = event.body ? JSON.parse(event.body) : {};
-    this.response = {};
+    this.response = {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
     this.callback = callback;
   }
 
@@ -11,10 +17,11 @@ class EventHandler {
     this.response.statusCode = code;
     return this;
   }
-  
+
   send(data) {
-    const body = data ? data : {};
+    const body = data || {};
     this.response.body = JSON.stringify(body);
+    console.log(this.response);
     this.callback(null, this.response);
   }
 }

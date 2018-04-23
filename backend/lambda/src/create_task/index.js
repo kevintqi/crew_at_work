@@ -1,17 +1,17 @@
 const EventHandler = require("my_util").EventHandler;
 const Validator = require("my_util").ModelValidator;
-const JobGetter = require("./src/jobgetter");
+const TaskCreator = require("./src/taskcreator");
 
-const eventHeaderModel = require("./src/data/eventheader.json");
-const validator = new Validator(eventHeaderModel);
-const jobGetter = new JobGetter();
+const bodyModel = require("./src/data/taskcreation.json");
+const validator = new Validator(bodyModel);
+const taskCreator = new TaskCreator();
 
 exports.handler = (event, context, callback) => {
   const eventHandler = new EventHandler(event, callback);
   validator
-    .run(eventHandler.query)
+    .run(eventHandler.inputData)
     .then(validData => {
-      return jobGetter
+      return taskCreator
         .run(validData)
         .then(data => eventHandler.status(200).send(data))
         .catch(err => eventHandler.status(500).send(err));

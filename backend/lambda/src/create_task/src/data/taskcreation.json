@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Task",
+  "description": "A task for performing the job",
+  "type": "object",
+  "properties": {
+    "squadId": {
+      "description": "The unique identifier for a squad",
+      "type": "string"
+    },
+    "jobId": {
+      "description": "The unique identifier for the job",
+      "type": "string"
+    },
+    "assigneeId": {
+      "description": "The unique identifier for the assignee",
+      "type": "string"
+    }
+  },
+  "required": ["squadId", "jobId"]
+}

@@ -12,12 +12,23 @@ pushd src/create_job
 rm -rf node_modules
 npm install
 rm -f ../../deploy/create_job.zip
-zip -r ../../deploy/create_job.zip  .
+zip -q -r ../../deploy/create_job.zip  .
 popd
 
 pushd src/get_job
 rm -rf node_modules
 npm install
 rm -f ../../deploy/get_job.zip
-zip -r ../../deploy/get_job.zip  .
+zip -q -r ../../deploy/get_job.zip  .
+popd
+
+pushd src/create_task
+rm -rf node_modules
+npm install
+rm -f ../../deploy/create_task.zip
+zip -q -r ../../deploy/create_task.zip  .
+popd
+
+pushd deploy
+ls -l *.zip
 popd
