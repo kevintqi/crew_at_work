@@ -1,0 +1,145 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/iron-label/iron-label.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="job-form">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .form-title,
+      .footer {
+        margin-bottom: 20px;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #3367d6;
+        margin-right: 20px;
+      }
+
+      .company {
+        color: #3367d6;
+        font-size: 20px;
+        font-weight: 200;
+      }
+
+      paper-button {
+        background-color: #4285f4;
+        color: #fff;
+        margin-top: 50px;
+        width: 100%;
+      }
+
+      iron-label {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
+    <div class="horizontal layout center form-title">
+      <div class="avatar" item-icon></div>
+      <div class="flex company">Connan Events Co.</div>
+    </div>
+
+    <iron-form id="form" on-iron-form-response="_handleFormSubmit" on-iron-form-presubmit="_presubmit" content-type="application/json">
+      <form method="post" content-type="application/json" action="https://4s3eofq8j5.execute-api.us-west-2.amazonaws.com/dev/api/v1/job">
+
+        <paper-input name="squadId" label="Squad ID" required autocomplete="squadId"></paper-input>
+        <br>
+        <iron-label> Contact Name </iron-label>
+        <paper-input name="name" label="Name" required autocomplete="name"></paper-input>
+        <paper-input name="phoneNumber" label="Phone" required autocomplete="phone"></paper-input>
+
+
+        <iron-label> Location </iron-label>
+        <paper-input name="street" label="Street" required autocomplete="street"></paper-input>
+        <paper-input name="city" label="City" required autocomplete="city"></paper-input>
+        <paper-input name="state" label="State" required autocomplete="state"></paper-input>
+        <paper-input name="zipCode" label="Zip Code" required autocomplete="zipCode"></paper-input>
+
+        <iron-label> Shedule </iron-label>
+        <paper-input name="repeatType" label="Repeat Type" required autocomplete="repeatType"></paper-input>
+        <paper-input name="startDate" label="Start Date" required autocomplete="startDate"></paper-input>
+        <paper-input name="endDate" label="End Date" required autocomplete="endDate"></paper-input>
+        <paper-input name="startTime" label="Start Time" required autocomplete="startTime"></paper-input>
+        <paper-input name="endTime" label="End Time" required autocomplete="endTime"></paper-input>
+
+
+        <paper-button on-tap="_submit">Submit</paper-button>
+      </form>
+    </iron-form>
+
+    <pre>[[response]]</pre>
+
+  </template>
+  <script>
+    class JobForm extends Polymer.Element {
+
+      static get is() {
+        return 'job-form';
+      }
+
+      static get properties() {
+        return {
+          response: {
+            type: String,
+            value: "none"
+          }
+
+        }
+      }
+
+      ready() {
+        super.ready();
+      }
+
+      _presubmit() {
+        let body = this.$.form.request.body;
+        let newBody = {
+          "squadId": body.squadId,
+          "contact": {
+            "name": body.name,
+            "phoneNumber": body.phoneNumber
+          },
+          "location": {
+            "street": body.street,
+            "city": body.city,
+            "state": body.state,
+            "zipCode": body.zipCode
+          },
+          "schedule": {
+            "repeatType": body.repeatType,
+            "startDate": body.startDate,
+            "endDate": body.endDate,
+            "startTime": body.startDate,
+            "endTime": body.endDate
+          }
+        };
+
+        this.$.form.request.body = newBody;
+        this.$.form.request.headers = {
+          'content-type': 'application/json'
+        };
+      }
+
+      _submit() {
+        this.$.form.submit();
+      }
+
+      _handleFormSubmit(e) {
+        this.response = JSON.stringify(e.detail.response, '', 2);
+      }
+    }
+
+    window.customElements.define(JobForm.is, JobForm);
+  </script>
+</dom-module>
