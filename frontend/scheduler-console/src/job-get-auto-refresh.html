@@ -1,0 +1,246 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="../bower_components/vaadin-grid/all-imports.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="job-get-auto-refresh">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      h4 {
+        color: #0667D0;
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+      }
+
+      paper-spinner-lite {
+        /*@apply --layout-fit;*/
+        display: none;
+        margin: auto;
+        z-index: 2;
+        height: 70px;
+        width: 70px;
+        --paper-spinner-color: var(--paper-reportdash-spinner-color, #2196F3);
+        --paper-spinner-stroke-width: var(--paper-reportdash-spinner-width, 5px);
+        @apply --paper-reportdash-spinner;
+      }
+
+      paper-spinner-lite[active] {
+        display: block;
+      }
+
+      .vgrid-material-style {
+        height: auto;
+      }
+
+      .wrap {
+        white-space: normal;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">Sebeca</div>
+      <h4> List of Jobs</h4>
+
+      <paper-input name="squadId" label="Squad ID" required value={{squadIdStr}}></paper-input>
+      <paper-button on-click="_submit">Get Jobs</paper-button><br><br>
+
+      <!-- <iron-ajax id="awsSource" handle-as="json" on-response="_handleResponse" loading="{{loading}}"> -->
+      <iron-ajax id="awsSource" handle-as="json" on-response="_handleResponse">
+      </iron-ajax>
+
+      <div  hidden="[[loading]]">
+        <vaadin-grid id="material" class="vgrid-material-style" aria-label="List of Jobs" items="[[jobs]]">
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Name</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.contact.name]] </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Phone</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.contact.phoneNumber]] </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Job ID</h4>
+              </span>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.jobId]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Zip Code</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.location.zipCode]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>City</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.location.city]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Street</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.location.street]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Repeat Type</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.schedule.repeatType]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Start Time</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.schedule.startTime]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>End Time</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.schedule.endTime]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Start Date</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.schedule.startDate]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          <vaadin-grid-column>
+            <template class="header">
+              <h4>Squad ID</h4>
+            </template>
+            <template>
+              <span class="wrap">
+                [[item.squadId]]
+              </span>
+            </template>
+          </vaadin-grid-column>
+
+          </vaadin-grid-column>
+        </vaadin-grid>
+      <!-- </div> -->
+
+    </div>
+
+  </template>
+
+  <script>
+    class JobGetAutoRefresh extends Polymer.Element {
+      static get is() {
+        return 'job-get-auto-refresh';
+      }
+
+      static get properties() {
+        return {
+          loading: {
+            type: Boolean,
+            notify: true,
+            value: true 
+          },
+          squadIdStr: {
+            type: String,
+            value: ""
+          }
+        }
+      }
+
+      ready() {
+        super.ready();
+        // Polymer.RenderStatus.afterNextRender(this, function () {
+        //   this._getJobs();
+        // });
+      }
+
+      _submit() {
+        this._getJobs();
+        this.loading = false;
+      }
+
+      _getJobs() {
+        var ajax = this.$.awsSource;
+        ajax.url =
+          'https://4s3eofq8j5.execute-api.us-west-2.amazonaws.com/dev/api/v1/job?squadId=' + this.squadIdStr;
+        ajax.generateRequest();
+      }
+
+      _handleResponse(response) {
+        this._normalize(response.detail.__data.response);
+        setTimeout(() => this.$.awsSource.generateRequest(), 2000);
+      }
+
+      _normalize(data) {
+        if ((data.jobs !== undefined) && 
+              (JSON.stringify(data.jobs) !== JSON.stringify(this.jobs))) {
+          this.set('jobs', data.jobs);
+          console.log("updated data");
+        } else {
+          console.log("NO updated data");
+        } 
+      }
+    }
+
+    window.customElements.define(JobGetAutoRefresh.is, JobGetAutoRefresh);
+  </script>
+</dom-module>
