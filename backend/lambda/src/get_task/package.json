@@ -1,0 +1,17 @@
+{
+  "name": "get_task",
+  "version": "1.0.0",
+  "description": "Get Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {},
+  "dependencies": {
+    "dateformat": "^3.0.3",
+    "my_db": "file:../my_db",
+    "my_util": "file:../my_util"
+  }
+}

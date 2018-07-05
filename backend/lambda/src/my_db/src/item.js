@@ -13,23 +13,37 @@ class Item {
     return this;
   }
 
-  addKeyConditionExpression(expression) {
-    this.KeyConditionExpression = expression;
+  addKeyConditionExpression(value) {
+    this.KeyConditionExpression = value;
     return this;
   }
 
-  addUpdateExpression(expression) {
-    this.UpdateExpression = expression;
+  addUpdateExpression(value) {
+    this.UpdateExpression = value;
+    return this;
+  }
+
+  addFilterExpression(value) {
+    this.FilterExpression = value;
+  }
+
+  addConditionExpression(value) {
+    this.ConditionExpression = value;
+    return this;
+  }
+
+  addProjectionExpression(value) {
+    this.ProjectionExpression = value;
+    return this;
+  }
+  
+  withExpressionAttributeNames(value) {
+    this.ExpressionAttributeNames = value;
     return this;
   }
 
   withExpressionValues(values) {
     this.ExpressionAttributeValues = values;
-    return this;
-  }
-
-  addConditionExpression(expression) {
-    this.ConditionExpression = expression;
     return this;
   }
 

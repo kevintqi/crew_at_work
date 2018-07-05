@@ -1,11 +1,11 @@
 {
     "TableName": "Task",
     "KeySchema": [
-      { "AttributeName": "effectiveTime", "KeyType": "HASH" },
+      { "AttributeName": "squadId", "KeyType": "HASH" },
       { "AttributeName": "taskId", "KeyType": "RANGE" }
     ],
     "AttributeDefinitions": [
-      { "AttributeName": "effectiveTime", "AttributeType": "S" },
+      { "AttributeName": "squadId", "AttributeType": "S" },
       { "AttributeName": "taskId", "AttributeType": "S" }
     ],
     "ProvisionedThroughput": {
