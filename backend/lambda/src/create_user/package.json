@@ -1,7 +1,7 @@
 {
-  "name": "my_db",
+  "name": "create_user",
   "version": "1.0.0",
-  "description": "Local AWS DynamoDB interfaces",
+  "description": "Create New User",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,6 @@
   "license": "ISC",
   "repository": {},
   "dependencies": {
-    "aws-sdk": "^2.275.1"
+    "my_util": "file:../my_util"
   }
 }

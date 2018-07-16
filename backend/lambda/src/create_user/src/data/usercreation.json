@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "User",
+    "description": "An user created based on customer request",
+    "type": "object",
+    "properties": {
+      "email": {
+        "description": "The email address",
+        "type": "string"
+      },
+      "password": {
+        "description": "The temporary password",
+        "type": "string"
+      },
+      "name": {
+        "description": "The name for display",
+        "type": "string"
+      },
+      "phoneNumber": {
+        "description": "The phone number",
+        "type": "string"
+      },
+      "gender": {
+        "type": "string"
+      },
+      "picture": {
+        "description": "URL for avatar",
+        "type": "string"
+      }
+    },
+    "required": ["email","name", "phoneNumber"]
+  }

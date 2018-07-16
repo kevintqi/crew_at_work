@@ -1,0 +1,12 @@
+{
+    "UserPoolId": "us-west-2_uvLRuYLaz",
+    "Username": "username",
+    "DesiredDeliveryMediums": [
+      "SMS",
+      "EMAIL"
+    ],
+    "ForceAliasCreation": false,
+    "MessageAction": "SUPPRESS",
+    "TemporaryPassword": "password",
+    "UserAttributes": []
+  }

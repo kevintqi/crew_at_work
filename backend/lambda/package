@@ -29,6 +29,13 @@ rm -f ../../deploy/create_task.zip
 zip -q -r ../../deploy/create_task.zip  .
 popd
 
+pushd src/create_user
+rm -rf node_modules
+npm install
+rm -f ../../deploy/create_user.zip
+zip -q -r ../../deploy/create_user.zip  .
+popd
+
 pushd deploy
 ls -l *.zip
 popd

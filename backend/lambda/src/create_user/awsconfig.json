@@ -1,0 +1,5 @@
+{ "region": "us-west-2",
+  "apiVersions": {
+    "cognitoidentityserviceprovider": "2016-04-18"
+  } 
+}
