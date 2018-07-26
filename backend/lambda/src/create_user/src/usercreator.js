@@ -22,26 +22,27 @@ class UserCreator {
     }
 
     _buildParams(inputData) {
-        this.params.Username = inputData.email;
-        this.params.TemporaryPassword = inputData.password;
+        this.params.UserPoolId = inputData.headers.UserPoolId;
+        this.params.Username = inputData.data.email;
+        this.params.TemporaryPassword = inputData.data.password || userTemplete.TemporaryPassword;
         this.params.UserAttributes.push({
             Name: 'name',
-            Value: inputData.name
+            Value: inputData.data.name
         });
         this.params.UserAttributes.push({
             Name: 'phone_number',
-            Value: '+1' + inputData.phoneNumber
+            Value: '+1' + inputData.data.phoneNumber
         });
-        if (inputData.picture) {
+        if (inputData.data.picture) {
             this.params.UserAttributes.push({
                 Name: 'picture',
-                Value: inputData.picture
+                Value: inputData.data.picture
             });
         }
-        if (inputData.gender) {
+        if (inputData.data.gender) {
             this.params.UserAttributes.push({
                 Name: 'gender',
-                Value: inputData.gender
+                Value: inputData.data.gender
             });
         }
     }

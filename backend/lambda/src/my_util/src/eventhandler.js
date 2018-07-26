@@ -9,7 +9,7 @@ class EventHandler {
     this.response = {
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "squadId"
+        "Access-Control-Allow-Headers": "*"
       }
     };
     this.callback = callback;
