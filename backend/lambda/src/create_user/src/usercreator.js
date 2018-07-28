@@ -22,7 +22,7 @@ class UserCreator {
     }
 
     _buildParams(inputData) {
-        this.params.UserPoolId = inputData.headers.UserPoolId;
+        this.params.UserPoolId = inputData.headers['user-pool-id'];
         this.params.Username = inputData.data.email;
         this.params.TemporaryPassword = inputData.data.password || userTemplete.TemporaryPassword;
         this.params.UserAttributes.push({

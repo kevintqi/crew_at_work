@@ -11,7 +11,7 @@ class JobGetter {
     const item = new Item("Job");
     item
       .addKeyConditionExpression("squadId = :s")
-      .withExpressionValues({ ":s": inputData.headers.UserPoolId});
+      .withExpressionValues({ ":s": inputData.headers['user-pool-id']});
     return this.client.query(item).then(data => {
       return { jobs: data.Items };
     });

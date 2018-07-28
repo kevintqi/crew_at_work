@@ -19,14 +19,14 @@ describe("EventValidator.run", () => {
     const validator = new EventValidator();
     it("should validate EventHandle", done => {
         const event = {
-            headers: {'UserPoolId':'UserPoolIdVal', 'Authorization':'AuthorizationVal'},
+            headers: {'user-pool-id':'UserPoolIdVal', 'authorization':'AuthorizationVal'},
             body: "{\"id\":5}",
         }
         const eventHandler = new EventHandler(event, null);
         validator.run(eventHandler, schema).then(
             data => {
-                data.headers.UserPoolId.should.equal(event.headers.UserPoolId);
-                data.headers.Authorization.should.equal(event.headers.Authorization);
+                data.headers['user-pool-id'].should.equal(event.headers['user-pool-id']);
+                data.headers.authorization.should.equal(event.headers.authorization);
                 data.data.id.should.equal(5);
             }
         ).catch(err => {
@@ -36,7 +36,7 @@ describe("EventValidator.run", () => {
     });
     it("should handle missing required header field", done => {
         const event = {
-            headers: {'Authorization':'AuthorizationVal'},
+            headers: {'authorization':'AuthorizationVal'},
             body: "{\"id\":5}",
         }
         const eventHandler = new EventHandler(event, null);
@@ -46,13 +46,13 @@ describe("EventValidator.run", () => {
             }
         ).catch(err => {
             err.message.length.should.equal(1);
-            err.message[0].should.contains('UserPoolId');
+            err.message[0].should.contains('user-pool-id');
         });
         done();
     });
     it("should handle missing required body field", done => {
         const event = {
-            headers: {'UserPoolId':'UserPoolIdVal', 'Authorization':'AuthorizationVal'},
+            headers: {'user-pool-id':'UserPoolIdVal', 'authorization':'AuthorizationVal'},
             body: "{\"ID\":5}",
         }
         const eventHandler = new EventHandler(event, null);
@@ -68,14 +68,14 @@ describe("EventValidator.run", () => {
     });
     it("should validate header only", done => {
         const event = {
-            headers: {'UserPoolId':'UserPoolIdVal', 'Authorization':'AuthorizationVal'},
+            headers: {'user-pool-id':'UserPoolIdVal', 'authorization':'AuthorizationVal'},
             body: "{\"ID\":5}",
         }
         const eventHandler = new EventHandler(event, null);
         validator.run(eventHandler).then(
             (data) => {
-                data.headers.UserPoolId.should.equal(event.headers.UserPoolId);
-                data.headers.Authorization.should.equal(event.headers.Authorization);
+                data.headers['user-pool-id'].should.equal(event.headers['user-pool-id']);
+                data.headers.authorization.should.equal(event.headers.authorization);
             }
         ).catch(err => {
             should.fail();

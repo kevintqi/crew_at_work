@@ -8,8 +8,7 @@ class EventHandler {
     this.inputData = event.body ? JSON.parse(event.body) : {};
     this.response = {
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Origin": "*"
       }
     };
     this.callback = callback;

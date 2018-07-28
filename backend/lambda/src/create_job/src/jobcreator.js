@@ -25,7 +25,7 @@ class JobCreator {
   _createJob(inputData) {
     const item = new Item(tableParams.TableName);
     inputData.data.jobId = uuid();
-    inputData.data.squadId = inputData.headers.UserPoolId;
+    inputData.data.squadId = inputData.headers['user-pool-id'];
     item.addData(inputData.data);
     return this.client.put(item).then(result => {
       return {
