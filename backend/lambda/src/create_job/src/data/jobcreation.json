@@ -4,10 +4,6 @@
   "description": "A job created based on customer request",
   "type": "object",
   "properties": {
-    "squadId": {
-      "description": "The unique identifier for a squad",
-      "type": "string"
-    },
     "contact": {
       "description": "Contact information of the customer",
       "type": "object",
@@ -68,5 +64,5 @@
       "required": ["repeatType"]
     }
   },
-  "required": ["squadId", "contact", "location", "schedule"]
+  "required": ["contact", "location", "schedule"]
 }

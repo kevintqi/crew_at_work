@@ -7,11 +7,11 @@ class JobGetter {
     this.client = new Client(AWS);
   }
 
-  run(data) {
+  run(inputData) {
     const item = new Item("Job");
     item
       .addKeyConditionExpression("squadId = :s")
-      .withExpressionValues({ ":s": data.squadId });
+      .withExpressionValues({ ":s": inputData.headers.UserPoolId});
     return this.client.query(item).then(data => {
       return { jobs: data.Items };
     });

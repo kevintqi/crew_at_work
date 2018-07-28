@@ -1,4 +1,3 @@
-const Sinon = require("sinon");
 const should = require("chai").should();
 const ModelValidator = require("my_util").ModelValidator;
 
@@ -21,7 +20,7 @@ describe("ModelValidator.run()", () => {
     required: ["id"]
   };
   const modelValidator = new ModelValidator(schema);
-  it("it should handle valid data", done => {
+  it("should handle valid data", done => {
     const data = { id: 1, name: "nameVal" };
     modelValidator
       .run(data)
@@ -34,7 +33,7 @@ describe("ModelValidator.run()", () => {
         done();
       });
   });
-  it("it should handle valid data with optional field", done => {
+  it("should handle valid data with optional field", done => {
     const data = { id: 1 };
     modelValidator
       .run(data)
@@ -47,7 +46,7 @@ describe("ModelValidator.run()", () => {
         done();
       });
   });
-  it("it should handle invalid data type", done => {
+  it("should handle invalid data type", done => {
     const data = { id: "idVal", name: "nameVal" };
     modelValidator
       .run(data)
@@ -61,7 +60,7 @@ describe("ModelValidator.run()", () => {
         done();
       });
   });
-  it("it should handle missing required field", done => {
+  it("should handle missing required field", done => {
     const data = { alias: "aliasVal", name: "nameVal" };
     modelValidator
       .run(data)

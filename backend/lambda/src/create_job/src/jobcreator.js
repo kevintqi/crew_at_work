@@ -12,20 +12,21 @@ class JobCreator {
     this.client = new Client(AWS);
   }
 
-  run(data) {
+  run(inputData) {
     if (!this.table.created) {
       return this.table.create().then(() => {
-        return this._createJob(data);
+        return this._createJob(inputData);
       });
     } else {
-      return this._createJob(data);
+      return this._createJob(inputData);
     }
   }
 
-  _createJob(data) {
+  _createJob(inputData) {
     const item = new Item(tableParams.TableName);
-    data.jobId = uuid();
-    item.addData(data);
+    inputData.data.jobId = uuid();
+    inputData.data.squadId = inputData.headers.UserPoolId;
+    item.addData(inputData.data);
     return this.client.put(item).then(result => {
       return {
         squadId: result.Item.squadId,
