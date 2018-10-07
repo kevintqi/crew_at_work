@@ -15,6 +15,13 @@ rm -f ../../deploy/create_customer.zip
 zip -q -r ../../deploy/create_customer.zip  .
 popd
 
+pushd src/list_customer
+rm -rf node_modules
+npm install
+rm -f ../../deploy/list_customer.zip
+zip -q -r ../../deploy/list_customer.zip  .
+popd
+
 pushd src/create_job
 rm -rf node_modules
 npm install
