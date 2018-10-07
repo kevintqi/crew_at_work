@@ -1,0 +1,15 @@
+{
+  "TableName": "Customer",
+  "KeySchema": [
+    { "AttributeName": "userPoolId", "KeyType": "HASH" },
+    { "AttributeName": "email", "KeyType": "RANGE" }
+  ],
+  "AttributeDefinitions": [
+    { "AttributeName": "userPoolId", "AttributeType": "S" },
+    { "AttributeName": "email", "AttributeType": "S" }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 5,
+    "WriteCapacityUnits": 5
+  }
+}

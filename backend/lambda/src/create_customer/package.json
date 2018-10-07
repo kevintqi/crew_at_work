@@ -1,0 +1,16 @@
+{
+  "name": "create_customer",
+  "version": "1.0.0",
+  "description": "Create Customer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {},
+  "dependencies": {
+    "my_db": "file:../my_db",
+    "my_util": "file:../my_util"
+  }
+}

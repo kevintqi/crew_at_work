@@ -8,6 +8,13 @@ pushd src/my_util
 npm install
 popd
 
+pushd src/create_customer
+rm -rf node_modules
+npm install
+rm -f ../../deploy/create_customer.zip
+zip -q -r ../../deploy/create_customer.zip  .
+popd
+
 pushd src/create_job
 rm -rf node_modules
 npm install
