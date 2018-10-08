@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Order",
+  "description": "An order created based on request",
+  "type": "object",
+  "properties": {
+    "event": {
+      "description": "The event for the order",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "info": {
+          "type": "string"
+        },
+        "location": {
+          "description": "Location where the event is conducted",
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "zipCode": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            }
+          },
+          "required": ["street", "state"]
+        },
+        "schedule": {
+          "description": "Time information on when the event is conducted",
+          "type": "object",
+          "properties": {
+            "startDate": {
+              "type": "string"
+            },
+            "endDate": {
+              "type": "string"
+            }
+          },
+          "required": ["startDate", "endDate"]
+        }
+      },
+      "required": ["name", "location", "schedule"]
+    },
+    "materials": {
+      "description": "Materials needed for the event",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category" : {
+            "type":"string"
+          },
+          "style": {
+            "type":"string"
+          },
+          "amount":{
+            "type":"number"
+          },
+          "promotionCode": {
+            "type":"string"
+          }
+        },
+        "required": ["category", "style", "amount"]
+      }
+    }
+  },
+  "required": ["materials", "event"]
+}

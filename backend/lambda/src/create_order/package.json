@@ -1,0 +1,17 @@
+{
+  "name": "create_order",
+  "version": "1.0.0",
+  "description": "Create Order",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "my_db": "file:../my_db",
+    "my_util": "file:../my_util",
+    "uuid": "^3.2.1"
+  }
+}

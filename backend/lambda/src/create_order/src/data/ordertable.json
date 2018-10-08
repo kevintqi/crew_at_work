@@ -1,0 +1,15 @@
+{
+  "TableName": "Order",
+  "KeySchema": [
+    { "AttributeName": "userPoolId", "KeyType": "HASH" },
+    { "AttributeName": "orderId", "KeyType": "RANGE" }
+  ],
+  "AttributeDefinitions": [
+    { "AttributeName": "userPoolId", "AttributeType": "S" },
+    { "AttributeName": "orderId", "AttributeType": "S" }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 5,
+    "WriteCapacityUnits": 5
+  }
+}
