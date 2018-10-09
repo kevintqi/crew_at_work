@@ -36,7 +36,7 @@ authorization:AuthorizationVal
 ```
 {
   "userPoolId": "UserPoolIdVal",
-  "email": "y@a.com"
+  "customerId": "y@a.com"
 }
 ```
 ## Status Code

@@ -28,7 +28,7 @@ class CustomerCreator {
     return this.client.put(item).then(result => {
       return {
         userPoolId: result.Item.userPoolId,
-        email: result.Item.email
+        customerId: result.Item.email
       };
     });
   }

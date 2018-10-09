@@ -3,10 +3,15 @@
   "title": "Order",
   "description": "An order created based on request",
   "type": "object",
+  "required": ["customerId","event", "materials"],
   "properties": {
+    "customerId": {
+      "type": "string"
+    },
     "event": {
       "description": "The event for the order",
       "type": "object",
+      "required": ["name", "location", "schedule"],
       "properties": {
         "name": {
           "type": "string"
@@ -17,6 +22,7 @@
         "location": {
           "description": "Location where the event is conducted",
           "type": "object",
+          "required": ["street", "state"],
           "properties": {
             "street": {
               "type": "string"
@@ -30,12 +36,12 @@
             "state": {
               "type": "string"
             }
-          },
-          "required": ["street", "state"]
+          }
         },
         "schedule": {
-          "description": "Time information on when the event is conducted",
+          "description": "Time information when the event is conducted",
           "type": "object",
+          "required": ["startDate", "endDate"],
           "properties": {
             "startDate": {
               "type": "string"
@@ -43,17 +49,16 @@
             "endDate": {
               "type": "string"
             }
-          },
-          "required": ["startDate", "endDate"]
+          }
         }
-      },
-      "required": ["name", "location", "schedule"]
+      }
     },
     "materials": {
       "description": "Materials needed for the event",
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["category", "style", "amount"],
         "properties": {
           "category" : {
             "type":"string"
@@ -62,15 +67,13 @@
             "type":"string"
           },
           "amount":{
-            "type":"number"
+            "type":"integer"
           },
           "promotionCode": {
             "type":"string"
           }
-        },
-        "required": ["category", "style", "amount"]
+        }
       }
     }
-  },
-  "required": ["materials", "event"]
+  }
 }
