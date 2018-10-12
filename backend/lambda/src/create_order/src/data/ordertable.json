@@ -1,11 +1,11 @@
 {
   "TableName": "Order",
   "KeySchema": [
-    { "AttributeName": "userPoolId", "KeyType": "HASH" },
+    { "AttributeName": "customerId", "KeyType": "HASH" },
     { "AttributeName": "orderId", "KeyType": "RANGE" }
   ],
   "AttributeDefinitions": [
-    { "AttributeName": "userPoolId", "AttributeType": "S" },
+    { "AttributeName": "customerId", "AttributeType": "S" },
     { "AttributeName": "orderId", "AttributeType": "S" }
   ],
   "ProvisionedThroughput": {

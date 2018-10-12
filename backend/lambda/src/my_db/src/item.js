@@ -25,6 +25,7 @@ class Item {
 
   addFilterExpression(value) {
     this.FilterExpression = value;
+    return this;
   }
 
   addConditionExpression(value) {
@@ -32,18 +33,9 @@ class Item {
     return this;
   }
 
-  addProjectionExpression(value) {
-    this.ProjectionExpression = value;
-    return this;
-  }
-  
-  withExpressionAttributeNames(value) {
-    this.ExpressionAttributeNames = value;
-    return this;
-  }
-
   withExpressionValues(values) {
-    this.ExpressionAttributeValues = values;
+    this.ExpressionAttributeValues = this.ExpressionAttributeValues || {};
+    this.ExpressionAttributeValues = Object.assign(values, this.ExpressionAttributeValues);
     return this;
   }
 

@@ -29,6 +29,13 @@ rm -f ../../deploy/create_order.zip
 zip -q -r ../../deploy/create_order.zip  .
 popd
 
+pushd src/list_order
+rm -rf node_modules
+npm install
+rm -f ../../deploy/list_order.zip
+zip -q -r ../../deploy/list_order.zip  .
+popd
+
 pushd src/create_job
 rm -rf node_modules
 npm install
@@ -43,12 +50,6 @@ rm -f ../../deploy/get_job.zip
 zip -q -r ../../deploy/get_job.zip  .
 popd
 
-pushd src/create_task
-rm -rf node_modules
-npm install
-rm -f ../../deploy/create_task.zip
-zip -q -r ../../deploy/create_task.zip  .
-popd
 
 pushd src/create_user
 rm -rf node_modules

@@ -12,7 +12,7 @@ class GetterHandler {
         this.validator
           .run(eventHandler)
           .then(validData => {
-            return this.getter.run(validData)
+            return this.getter.run(validData, eventHandler)
               .then(data => eventHandler.status(200).send(data))
               .catch(err => eventHandler.status(500).send(err));
           })
