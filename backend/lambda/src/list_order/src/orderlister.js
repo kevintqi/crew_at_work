@@ -9,11 +9,9 @@ class OrderLister {
 
   run(inputData, eventHandler) {
     const item = new Item("Order");
-    if (eventHandler.query && eventHandler.query.customerId) {
-      item
+    item
         .addKeyConditionExpression("customerId = :c")
-        .withExpressionValues({ ":c": eventHandler.query.customerId});
-    }
+        .withExpressionValues({ ":c": eventHandler.path.customerId});
     return this.client.query(item).then(data => {
       return { customers: data.Items };
     });
