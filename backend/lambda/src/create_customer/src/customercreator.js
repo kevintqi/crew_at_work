@@ -2,6 +2,7 @@ const AWS = require("my_db").AWS;
 const Table = require("my_db").Table;
 const Item = require("my_db").Item;
 const Client = require("my_db").Client;
+const btoa = require('btoa');
 
 const tableParams = require("./data/customertable.json");
 
@@ -28,7 +29,7 @@ class CustomerCreator {
     return this.client.put(item).then(result => {
       return {
         userPoolId: result.Item.userPoolId,
-        customerId: result.Item.email
+        customerId: btoa(result.Item.email)
       };
     });
   }

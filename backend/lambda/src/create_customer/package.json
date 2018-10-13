@@ -10,6 +10,7 @@
   "license": "ISC",
   "repository": {},
   "dependencies": {
+    "btoa": "^1.2.1",
     "my_db": "file:../my_db",
     "my_util": "file:../my_util"
   }

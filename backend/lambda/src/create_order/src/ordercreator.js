@@ -26,6 +26,7 @@ class OrderCreator {
     const item = new Item(tableParams.TableName);
     inputData.data.userPoolId = inputData.headers['user-pool-id'];
     inputData.data.orderId = uuid();
+    inputData.data.createdAt = Date.now();
     item.addData(inputData.data);
     return this.client.put(item).then(result => {
       return {

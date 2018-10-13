@@ -13,9 +13,9 @@
 
 ## Sample REST Request
 ### URL
-POST /api/v1/order
+POST /order
 ```
-https://4s3eofq8j5.execute-api.us-west-2.amazonaws.com/dev
+https://cq7lc4v7id.execute-api.us-west-2.amazonaws.com/dev
 ```
 ### Headers
 ```
@@ -25,7 +25,7 @@ authorization:AuthorizationVal
 ### Body
 ```
 { 
-  "customerId":"y@a.com",
+  "customerId":"eUBhLmNvbQ==",
   "event":{  
     "name":"LA Jazz Festival",
     "info":"2017 LA Jazz Festival at Hollywood Bowl",
@@ -61,7 +61,7 @@ authorization:AuthorizationVal
 ```
 {
   "userPoolId": "UserPoolIdVal",
-  "orderId": "50894b70-9289-11e8-9b92-8b3960438cd3"
+  "orderId": "c81a6300-cf3c-11e8-b5c2-db55c339a89a"
 }
 ```
 ## Status Code

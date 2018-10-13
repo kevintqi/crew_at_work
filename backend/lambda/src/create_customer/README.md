@@ -13,9 +13,9 @@
 
 ## Sample REST Request
 ### URL
-POST /api/v1/customer
+POST /customer
 ```
-https://4s3eofq8j5.execute-api.us-west-2.amazonaws.com/dev
+https://cq7lc4v7id.execute-api.us-west-2.amazonaws.com/dev
 ```
 ### Headers
 ```
@@ -36,7 +36,7 @@ authorization:AuthorizationVal
 ```
 {
   "userPoolId": "UserPoolIdVal",
-  "customerId": "y@a.com"
+  "customerId": "eUBhLmNvbQ=="
 }
 ```
 ## Status Code

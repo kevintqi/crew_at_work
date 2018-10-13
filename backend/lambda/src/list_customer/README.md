@@ -12,13 +12,13 @@
 
 ## Sample REST Request
 ### URL
-GET /api/v1/customer
+GET /customer
 ```
-https://4s3eofq8j5.execute-api.us-west-2.amazonaws.com/dev
+https://cq7lc4v7id.execute-api.us-west-2.amazonaws.com/dev
 ```
 ### Headers
 ```
-user-pool-id:us-west-2_uvLRuYLaz
+user-pool-id:UserPoolIdVal
 authorization:AuthorizationVal
 ```
 
